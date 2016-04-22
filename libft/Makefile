@@ -6,7 +6,11 @@
 #    By: afillion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/30 15:37:28 by afillion          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2016/04/22 11:06:17 by qdegraev         ###   ########.fr        #
+=======
+#    Updated: 2016/03/29 17:34:06 by qdegraev         ###   ########.fr        #
+>>>>>>> b2bd455a799a00fa3386e8babf521c52cd2f1ef3
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,8 +85,11 @@ SRC =  ft_strlcat.c \
 	ft_strcat.c \
 	ft_strnew.c \
 	ft_strcpy.c \
+<<<<<<< HEAD
 	ft_lstadd_last.c \
 	ft_lstadd_first.c \
+=======
+>>>>>>> b2bd455a799a00fa3386e8babf521c52cd2f1ef3
 	get_next_line.c \
 	ft_getnbr.c \
 	ft_abs.c \
@@ -104,8 +111,11 @@ SRC =  ft_strlcat.c \
 	type_o.c \
 	type_p.c \
 	ft_wchar.c \
+<<<<<<< HEAD
 	ft_lstadd_last_circ.c \
 	ft_lstadd_first_circ.c \
+=======
+>>>>>>> b2bd455a799a00fa3386e8babf521c52cd2f1ef3
 
 OBJ = $(SRC:.c=.o)
 
