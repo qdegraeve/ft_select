@@ -12,14 +12,22 @@
 
 #include "ft_select.h"
 
-int		sig_handler(int sig)
+t_env	*get_env(t_env *e)
 {
-	switch (sig) {
-		case 2:
+	static t_env *stat_e = NULL;
+
+	if (e != NULL)
+		stat_e = e;
+	return (stat_e);
+}
+
+void	sig_handler(int sig)
+{
+	if (sig == SIGSTOP) {
 			term_reset();
 			exit(0);
-		case 28:
-			ft_printf("---- resize\n ----");
-	}
-	return (0);
+			}
+	else if (sig == SIGWINCH)
+			display_choices(get_env(NULL));
+	signal(sig, sig_handler);
 }

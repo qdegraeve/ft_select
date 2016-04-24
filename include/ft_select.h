@@ -25,6 +25,7 @@
 # include <termios.h>
 # include "../libft/include/ft_printf.h"
 # include <sys/ioctl.h>
+# include <signal.h>
 
 typedef struct	s_env
 {
@@ -60,6 +61,7 @@ void		move(t_env *e);
 /*
 **		signals.c
 */
-int		sig_handler(int sig);
+void		sig_handler(int sig);
+t_env	*get_env(t_env *e);
 
 #endif

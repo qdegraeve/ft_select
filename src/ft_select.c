@@ -44,7 +44,7 @@ void		term_set()
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &term);
-	//tputs(tgetstr("vi", NULL), 1, ft_putchar2);
+	tputs(tgetstr("vi", NULL), 1, ft_putchar2);
 }
 
 void		term_reset()
@@ -85,9 +85,16 @@ t_env	argv_copy(char **av, int ac)
 int		main(int ac, char **av)
 {
 	t_env	e;
-	
+	int i;
+
+	i = 0;
 	e = argv_copy(av, ac);
 	term_set();
+	while (i < 33)
+	{
+		signal(i, sig_handler);
+		i++;
+	}
 	move(&e);
 	term_reset();
 	return (0);
