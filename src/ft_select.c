@@ -35,27 +35,25 @@ void		del_choice(void *c, size_t content_size)
 
 void		term_set()
 {
-	int		i;
 	char	*name = getenv ("TERM");
 	struct termios term;
 
-	i = 0;
-	i = tgetent(NULL, name);
+	tgetent(NULL, name);
 	tcgetattr(0, &term);
 	term.c_lflag &= ~(ICANON | ECHO);
 	term.c_cc[VMIN] = 1;
 	term.c_cc[VTIME] = 0;
 	tcsetattr(0, 0, &term);
+	//tputs(tgetstr("vi", NULL), 1, ft_putchar2);
 }
 
 void		term_reset()
 {
-	int		i;
 	char	*name = getenv ("TERM");
 	struct termios term;
 
-	i = 0;
-	i = tgetent(NULL, name);
+	tputs(tgetstr("ve", NULL), 1, ft_putchar2);
+	tgetent(NULL, name);
 	tcgetattr(0, &term);
 	term.c_lflag &= (ICANON | ECHO);
 	tcsetattr(0, 0, &term);
