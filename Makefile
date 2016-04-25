@@ -6,7 +6,7 @@
 #    By: qdegraev <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/07 08:41:32 by qdegraev          #+#    #+#              #
-#    Updated: 2016/04/21 14:46:16 by qdegraev         ###   ########.fr        #
+#    Updated: 2016/04/25 10:31:56 by qdegraev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ SRC =  \
 	ft_select.c \
 	display.c \
 	signals.c \
+	actions.c \
+	keys.c \
+	tools.c \
 
 OBJ = $(SRC:.c=.o)
 

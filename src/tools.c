@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_first.c                                  :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qdegraev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/20 15:27:25 by qdegraev          #+#    #+#             */
-/*   Updated: 2016/04/25 10:57:26 by qdegraev         ###   ########.fr       */
+/*   Created: 2016/04/25 10:30:19 by qdegraev          #+#    #+#             */
+/*   Updated: 2016/04/25 10:41:21 by qdegraev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_select.h"
 
-int		ft_lstadd_first(t_list *lst, void const *content, size_t cont_size)
+int		ft_putchar2(int c)
 {
-	t_elem	*new;
-
-	new = NULL;
-	if (!(new = ft_lstnew(content, cont_size)))
-		return (-1);
-	if (lst->length == 0)
-	{
-		lst->tail = new;
-		lst->head = new;
-		lst->length++;
-	}
-	else
-	{
-		new->next = lst->head;
-		lst->head->prev = new;
-		lst->head = new;
-		lst->length++;
-	}
+	ft_putchar(c);
 	return (0);
+}
+
+void	liste_init(t_list *lst)
+{
+	lst->head = NULL;
+	lst->tail = NULL;
+	lst->length = 0;
+}
+
+void	env_init(t_env *e)
+{
+	e->length = 0;
+	e->up = 0;
+	e->line = 0;
+	e->on = 0;
+	e->col = 0;
+}
+
+void	del_choice(void *c, size_t content_size)
+{
+	ft_strdel(&((t_choice*)c)->arg);
+	ft_bzero(c, content_size);
+	free(c);
 }
