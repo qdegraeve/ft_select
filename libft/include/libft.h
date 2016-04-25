@@ -6,7 +6,7 @@
 /*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:04:50 by afillion          #+#    #+#             */
-/*   Updated: 2016/04/25 10:54:02 by qdegraev         ###   ########.fr       */
+/*   Updated: 2016/04/25 21:09:01 by qdegraev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,7 @@ void				ft_putnbr_fd(int n, int fd);
 t_elem				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list *lst, t_elem **alst,
 		void (*del)(void *, size_t));
-void				ft_lstdel(t_list *lst, t_elem **alst,
-		void (*del)(void *, size_t));
+void				ft_lstdel(t_list *lst, void (*del)(void *, size_t));
 void				ft_lstadd(t_elem **alst, t_elem *new);
 void				ft_lstiter(t_elem *lst, void (*f)(t_elem *elem));
 t_elem				*ft_lstmap(t_elem *lst, t_elem *(*f)(t_elem *elem));

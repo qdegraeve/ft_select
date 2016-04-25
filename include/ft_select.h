@@ -6,7 +6,7 @@
 /*   By: qdegraev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 11:41:04 by qdegraev          #+#    #+#             */
-/*   Updated: 2016/04/25 10:54:11 by qdegraev         ###   ########.fr       */
+/*   Updated: 2016/04/25 21:09:45 by qdegraev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct	s_env
 	int			col;
 	t_list		lst;
 	int			up;
+	int			fd;
+	struct termios term;
 }				t_env;
 
 typedef struct	s_choice
@@ -47,7 +49,7 @@ typedef struct	s_choice
 **		main.c
 */
 void			term_set();
-void			term_reset();
+void			term_reset(struct termios term);
 int				ft_putchar2(int c);
 void			del_choice(void *c, size_t content_size);
 
@@ -56,26 +58,29 @@ void			del_choice(void *c, size_t content_size);
 */
 void			display_choices(t_env *e);
 void			move(t_env *e);
+void			initial_position(t_env *e);
 
 /*
 **		signals.c
 */
-void			sig_handler(int sig);
-t_env			*get_env(t_env *e);
+void	signal_catcher();
+t_env			*get_env();
 
 /*
 **		keys.c
 */
 void			get_input(t_env *e);
+void			get_fd(t_env *e);
 
 /*
 **		actions.c
 */
 void			chose_one(t_env *e);
 void			remove_one(t_env *e);
+void			selected(t_env *e);
 
 /*
-**		actions.c
+**		tools.c
 */
 int				ft_putchar2(int c);
 void			liste_init(t_list *lst);

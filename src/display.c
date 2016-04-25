@@ -6,7 +6,7 @@
 /*   By: qdegraev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/21 14:31:30 by qdegraev          #+#    #+#             */
-/*   Updated: 2016/04/25 10:49:48 by qdegraev         ###   ########.fr       */
+/*   Updated: 2016/04/25 21:57:35 by qdegraev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,24 @@ int		define_print_disp(t_env *e)
 
 void	print_one(t_env *e, t_elem *elem, int i)
 {
-	t_choice	*c;
-	int			j;
+	t_choice				*c;
+	unsigned long			j;
 
+	j = 0;
 	c = (t_choice*)elem->content;
 	if (i == e->on)
 		tputs(tgetstr("us", NULL), 1, ft_putchar2);
 	if (c->sel == 1)
 		tputs(tgetstr("mr", NULL), 1, ft_putchar2);
-	j = ft_printf("%-s", c->arg);
+	if (i == e->on)
+		ft_putstr_fd("\033[32m", e->fd);
+	else
+		ft_putstr_fd("\033[36m", e->fd);
+	ft_putstr_fd(c->arg, e->fd);
+	ft_putstr_fd("\033[0m", e->fd);
 	tputs(tgetstr("me", NULL), 1, ft_putchar2);
-	ft_printf("%*s ", e->length - j, "");
+	while (j++ <= e->length - ft_strlen(c->arg))
+		ft_putstr_fd(" ", e->fd);
 }
 
 void	display_choices(t_env *e)

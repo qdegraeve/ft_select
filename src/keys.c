@@ -6,7 +6,7 @@
 /*   By: qdegraev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/25 10:07:23 by qdegraev          #+#    #+#             */
-/*   Updated: 2016/04/25 10:56:25 by qdegraev         ###   ########.fr       */
+/*   Updated: 2016/04/25 21:09:51 by qdegraev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,23 @@ void	keys_action(t_env *e, int input)
 		chose_one(e);
 	else if (input == 127)
 		remove_one(e);
+	else if (input == 10)
+		selected(e);
 	else if (input == ESC)
 	{
-		term_reset();
+		initial_position(e);
+		term_reset(e->term);
 		exit(0);
 	}
+	else
+		ft_printf("input == %d\n");
+}
+
+void	get_fd(t_env *e)
+{
+	int		fd = 0;
+
+	e->fd = fd;
 }
 
 void	get_input(t_env *e)
@@ -39,7 +51,7 @@ void	get_input(t_env *e)
 	char	buf[5];
 
 	input = 0;
-	e = get_env(e);
+	get_env(e);
 	display_choices(e);
 	ft_bzero(buf, 4);
 	while (42)
